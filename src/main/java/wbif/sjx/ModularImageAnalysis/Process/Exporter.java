@@ -3,6 +3,8 @@
 
 package wbif.sjx.ModularImageAnalysis.Process;
 
+import net.imglib2.type.NativeType;
+import net.imglib2.type.numeric.RealType;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -35,7 +37,7 @@ import java.util.LinkedHashSet;
 /**
  * Created by sc13967 on 12/05/2017.
  */
-public class Exporter {
+public class Exporter <T extends RealType<T> & NativeType<T>> {
     public static final int XML_EXPORT = 0;
     public static final int XLSX_EXPORT = 1;
     public static final int JSON_EXPORT = 2;
@@ -111,7 +113,7 @@ public class Exporter {
 
                 // Creating new elements for each image in the current workspace with at least one measurement
                 for (String imageName:workspace.getImages().keySet()) {
-                    Image image = workspace.getImages().get(imageName);
+                    Image<T> image = workspace.getImages().get(imageName);
 
                     if (image.getMeasurements() != null) {
                         Element imageElement = doc.createElement("IMAGE");
@@ -120,7 +122,8 @@ public class Exporter {
                         nameAttr.appendChild(doc.createTextNode(String.valueOf(imageName)));
                         imageElement.setAttributeNode(nameAttr);
 
-                        for (Measurement measurement : image.getMeasurements().values()) {
+                        HashMap<String,Measurement> measurementHashMap = image.getMeasurements();
+                        for (Measurement measurement : measurementHashMap.values()) {
                             String attrName = measurement.getName().toUpperCase().replaceAll(" ", "_");
                             Attr measAttr = doc.createAttribute(attrName);
                             String attrValue = df.format(measurement.getValue());

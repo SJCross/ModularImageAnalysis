@@ -3,8 +3,6 @@ package wbif.sjx.ModularImageAnalysis.Object;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.gui.Roi;
-import ij.plugin.Selection;
-import ij.plugin.ZProjector;
 import wbif.sjx.ModularImageAnalysis.Module.ObjectProcessing.ObjectImageConverter;
 import wbif.sjx.ModularImageAnalysis.Module.ObjectProcessing.ProjectObjects;
 import wbif.sjx.common.Object.*;

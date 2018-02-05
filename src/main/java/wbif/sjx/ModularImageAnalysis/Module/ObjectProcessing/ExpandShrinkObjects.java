@@ -1,10 +1,7 @@
 package wbif.sjx.ModularImageAnalysis.Module.ObjectProcessing;
 
-import ij.IJ;
 import ij.ImagePlus;
 import ij.Prefs;
-import ij.gui.Roi;
-import ij.measure.Calibration;
 import wbif.sjx.ModularImageAnalysis.Exceptions.GenericMIAException;
 import wbif.sjx.ModularImageAnalysis.Module.HCModule;
 import wbif.sjx.ModularImageAnalysis.Module.ImageProcessing.BinaryOperations;

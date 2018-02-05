@@ -9,13 +9,8 @@ import fiji.plugin.trackmate.tracking.LAPUtils;
 import fiji.plugin.trackmate.tracking.sparselap.SparseLAPTrackerFactory;
 import ij.IJ;
 import ij.ImagePlus;
-import ij.gui.Overlay;
-import ij.gui.PointRoi;
-import ij.gui.TextRoi;
 import ij.measure.Calibration;
 import ij.plugin.Duplicator;
-import ij.plugin.HyperStackConverter;
-import net.imglib2.type.operators.Add;
 import wbif.sjx.ModularImageAnalysis.Module.HCModule;
 import wbif.sjx.ModularImageAnalysis.Module.ImageProcessing.NormaliseIntensity;
 import wbif.sjx.ModularImageAnalysis.Module.Visualisation.AddObjectsOverlay;
@@ -26,7 +21,6 @@ import wbif.sjx.common.Process.IntensityMinMax;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Set;
 
 /**

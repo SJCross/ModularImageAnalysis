@@ -1,5 +1,7 @@
 package wbif.sjx.ModularImageAnalysis.Object;
 
+import net.imglib2.type.NativeType;
+import net.imglib2.type.numeric.RealType;
 import wbif.sjx.common.Object.HCMetadata;
 
 import java.io.File;
@@ -8,9 +10,9 @@ import java.util.*;
 /**
  * Created by sc13967 on 02/05/2017.
  */
-public class Workspace {
+public class Workspace <T extends RealType<T> & NativeType<T>> {
     private LinkedHashMap<String, ObjCollection> objects = new LinkedHashMap<>();
-    private LinkedHashMap<String, Image> images = new LinkedHashMap<>();
+    private LinkedHashMap<String, Image<T>> images = new LinkedHashMap<>();
     private HCMetadata metadata = new HCMetadata();
     private int ID;
 
@@ -48,7 +50,7 @@ public class Workspace {
 
     }
 
-    public void addImage(Image image) {
+    public void addImage(Image<T> image) {
         images.put(image.getName(), image);
     }
 
@@ -67,7 +69,7 @@ public class Workspace {
     public void clearAllImages(boolean retainMeasurements) {
         if (retainMeasurements) {
             // Sets the ImagePlus to null, but leaves measurements
-            for (Image image:images.values()) {
+            for (Image<T> image:images.values()) {
                 image.setImagePlus(null);
             }
 
@@ -94,7 +96,7 @@ public class Workspace {
         }
     }
 
-    public Image getImage(String name) {
+    public Image<T> getImage(String name) {
         return images.get(name);
 
     }
@@ -144,11 +146,11 @@ public class Workspace {
         this.objects = objects;
     }
 
-    public HashMap<String, Image> getImages() {
+    public HashMap<String, Image<T>> getImages() {
         return images;
     }
 
-    public void setImages(LinkedHashMap<String, Image> images) {
+    public void setImages(LinkedHashMap<String, Image<T>> images) {
         this.images = images;
     }
 
